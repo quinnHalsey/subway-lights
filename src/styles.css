@@ -1,0 +1,10 @@
+#map-canvas {
+    transform: scale(-1);
+    overflow: visible;
+}
+
+#map-canvas .l-train {
+    stroke: black;
+    stroke-width: 4;
+    fill: none;
+}

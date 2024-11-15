@@ -1,0 +1,17 @@
+{
+    "name": "subway-lights",
+    "version": "1.0.0",
+    "description": "Visualization of realtime NYC subway locations",
+    "main": "index.ts",
+    "type": "module",
+    "scripts": {
+        "start": "vite"
+    },
+    "author": "Halsey Quinn",
+    "dependencies": {
+        "protobufjs": "^7.4.0"
+    },
+    "devDependencies": {
+        "vite": "^5.4.11"
+    }
+}
