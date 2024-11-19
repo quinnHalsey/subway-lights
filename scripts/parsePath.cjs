@@ -13,7 +13,6 @@ function parsePath(inputFilePath, outputFileName) {
     // Read input file
     const data = fs.readFileSync(inputFilePath, 'utf8');
     const BOX_SIZE = 1000;
-    const MARGIN = 0.001;
 
     // used to define bounds of scaling region
     let maxLng, maxLat, minLat, minLng;
@@ -42,9 +41,6 @@ function parsePath(inputFilePath, outputFileName) {
             return { lat, lng };
         });
 
-    // Adjust bounds with margin
-    maxLat += MARGIN;
-
     const latRange = maxLat - minLat;
     const lngRange = maxLng - minLng;
 
@@ -53,7 +49,10 @@ function parsePath(inputFilePath, outputFileName) {
         .map((point, index) => {
             const command = index === 0 ? 'M' : 'L';
             const scaledLng = Number(
-                (((point.lng - minLng) / lngRange) * BOX_SIZE).toFixed(3)
+                (
+                    BOX_SIZE -
+                    ((point.lng - minLng) / lngRange) * BOX_SIZE
+                ).toFixed(3)
             );
             const scaledLat = Number(
                 (((point.lat - minLat) / latRange) * BOX_SIZE).toFixed(3)
@@ -70,6 +69,7 @@ function parsePath(inputFilePath, outputFileName) {
         'data',
         outputFileName
     );
+
     const outputContent = `export const ${outputFileName.replace(
         '.js',
         ''

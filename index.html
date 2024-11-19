@@ -7,9 +7,153 @@
         <link rel="stylesheet" href="src/styles.css" />
     </head>
     <body>
-        <svg id="map-canvas" width="1000" height="1000">
-            <path class="l-train" />
-        </svg>
+        <div id="map-wrapper">
+            <svg id="map-canvas" width="1000" height="1000">
+                <path class="l-train" />
+                <g id="l-train__stations" class="stations">
+                    <circle cx="0" cy="1000" r="5" class="station"></circle>
+                    <circle
+                        cx="55.37973170661599"
+                        cy="973.7766180213805"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="113.28367770374024"
+                        cy="946.4364335341709"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="157.34269077424446"
+                        cy="925.6037713562165"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="200.31170221920618"
+                        cy="905.243602547199"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="437.0141604596912"
+                        cy="758.6740117908753"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="500.0908334687613"
+                        cy="723.8705797709054"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="559.5819748152809"
+                        cy="729.2612995715705"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="591.928251121128"
+                        cy="700.9224359181003"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="599.7686136899971"
+                        cy="655.9603964648849"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="663.8587969823948"
+                        cy="638.9184197245137"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="761.7103464102554"
+                        cy="643.8044306991947"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="804.621989348624"
+                        cy="613.7796247973604"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="870.0125254573152"
+                        cy="570.8578976193452"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="941.7422815455737"
+                        cy="525.627396024652"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="942.1056154207546"
+                        cy="452.1976310900814"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="930.6032298469844"
+                        cy="388.46471870537516"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="949.8121181409515"
+                        cy="345.8007151832059"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="951.1794008815812"
+                        cy="308.0978920352918"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="961.9073116162751"
+                        cy="243.90322476728042"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="975.3315421611212"
+                        cy="186.67783469175308"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="988.1342805511849"
+                        cy="129.71016827207183"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="985.7152418561201"
+                        cy="42.08412529668717"
+                        r="5"
+                        class="station"
+                    ></circle>
+                    <circle
+                        cx="963.1024888371253"
+                        cy="0"
+                        r="5"
+                        class="station"
+                    ></circle>
+                </g>
+                <g id="l-train__trains" class="trains"></g>
+            </svg>
+        </div>
         <script src="src/index.js" type="module" defer></script>
     </body>
 </html>

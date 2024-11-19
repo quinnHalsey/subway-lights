@@ -1,5 +1,4 @@
 #map-canvas {
-    transform: scale(-1);
     overflow: visible;
 }
 
@@ -7,4 +6,17 @@
     stroke: black;
     stroke-width: 4;
     fill: none;
+}
+
+#map-canvas .train {
+    fill: red;
+}
+
+#map-wrapper {
+    transform: scaleY(-1);
+    width: 1000px;
+}
+
+.station {
+    fill: blue;
 }
