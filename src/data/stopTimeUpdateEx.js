@@ -1,4 +1,4 @@
-const exampleStopTimeUpdate = [
+export const exampleStopTimeUpdate = [
     {
         stopSequence: 0,
         departure: {
