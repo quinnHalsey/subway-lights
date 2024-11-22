@@ -5,7 +5,6 @@ import { findAndNormalizeTrainPosition } from './trainPosition';
 
 async function fetchLTrainData() {
     try {
-        // Fetch the GTFS Realtime feed
         const res = await fetch(
             'https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs-l',
             { cache: 'no-cache' }
