@@ -14,7 +14,10 @@ body {
 }
 
 #map-canvas .train {
-    fill: red;
+    fill: #39ff14;
+    transform-origin: center;
+    transform-box: fill-box;
+    transform: scale(2);
 }
 
 #map-wrapper {

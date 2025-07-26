@@ -120,7 +120,7 @@ const updateAndClearTrainPositions = async () => {
     await updateTrainPositions();
 };
 
-setInterval(updateAndClearTrainPositions, 5000);
+setInterval(updateAndClearTrainPositions, 1000);
 updateAndClearTrainPositions();
 
 //TODO: can hardcode this path in index.html once final output is determined
