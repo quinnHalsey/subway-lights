@@ -1,4 +1,5 @@
 import { lTrainStations, lTrainStationsMap } from './data/lTrainStations.js';
+import { lTrainTimeBetweenStations } from './data/lTrainTimeBetweenStations.js';
 import { normalizeValues } from './helpers/normalizeValues.js';
 
 export const findAndNormalizeTrainPosition = (
@@ -6,7 +7,8 @@ export const findAndNormalizeTrainPosition = (
     stopSequence,
     currStatus,
     stopNum,
-    direction
+    direction,
+    train
 ) => {
     let lat = lTrainStationsMap?.[stopId]?.lat;
     let lng = lTrainStationsMap?.[stopId]?.lng;
@@ -16,9 +18,31 @@ export const findAndNormalizeTrainPosition = (
         return;
     }
 
-    // If train is not STOPPED_AT a stop, find the middle between the previous and current stop
-    // TODO: add more complex logic for where exactly train is between stops
+    if (currStatus === 'STOPPED_AT') {
+        console.log('Train is stopped at a stop');
+        console.log(train);
+    }
+
     if (currStatus === 'IN_TRANSIT_TO') {
+        // If train is not STOPPED_AT a stop, find the middle between the previous and current stop
+        // TODO: add more complex logic for where exactly train is between stops
+        const totalTimeBetweenStops =
+            lTrainTimeBetweenStations?.[stopId]?.[
+                `timeToNextStation${direction}`
+            ];
+
+        const currentTimeUnix = Math.floor(Date.now() / 1000);
+
+        const timeLeftToNextStation =
+            train.tripUpdate?.stopTimeUpdate[0]?.arrival?.time -
+            currentTimeUnix;
+
+        if (timeLeftToNextStation <= 0) {
+            console.log('Train already arrived at stop');
+            const { normalizedLat, normalizedLng } = normalizeValues(lat, lng);
+            return { x: normalizedLng, y: normalizedLat };
+        }
+
         const stopIdx =
             direction === 'N'
                 ? lTrainStations.length - stopSequence - 1
@@ -56,10 +80,12 @@ export const findAndNormalizeTrainPosition = (
             trainPath
         );
 
-        const midwayLength = (currStopLength + prevStopLength) / 2;
-        const halfwayPoint = trainPath.getPointAtLength(midwayLength);
+        const ratio = timeLeftToNextStation / totalTimeBetweenStops;
+        const adjustedLength =
+            prevStopLength + (currStopLength - prevStopLength) * ratio;
+        const adjustedPoint = trainPath.getPointAtLength(adjustedLength);
 
-        return halfwayPoint;
+        return adjustedPoint;
     }
 
     const { normalizedLat, normalizedLng } = normalizeValues(lat, lng);

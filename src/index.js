@@ -61,9 +61,14 @@ fetchServiceAlerts().then((alerts) => {
 });
 
 async function updateTrainPositions() {
+    //TODO: run check updates API for information outage
     const trains = await fetchLTrainData();
-    console.log(trains.length, 'trains length');
-    trains.forEach((train, i) => {
+    const filteredTrains = trains.filter((train) => {
+        console.log(train.tripUpdate?.trip?.tripId);
+        return train.tripUpdate?.trip?.tripId === '076350_L..N';
+    });
+    console.log(filteredTrains);
+    filteredTrains.forEach((train, i) => {
         if (train.vehicle) return; // If object is a follow-up object to train at i - 1, already pulled needed data and can skip
 
         const stopId = train.tripUpdate?.stopTimeUpdate[0]?.stopId?.slice(0, 3);
@@ -82,7 +87,8 @@ async function updateTrainPositions() {
             stopSequence,
             currStatus,
             stopNum,
-            direction
+            direction,
+            train
         );
 
         if (!trainPosition) {
