@@ -1,9 +1,14 @@
+body {
+    background-color: #333;
+}
+
 #map-canvas {
     overflow: visible;
+    background-color: #333;
 }
 
 #map-canvas .l-train {
-    stroke: black;
+    stroke: white;
     stroke-width: 4;
     fill: none;
 }
